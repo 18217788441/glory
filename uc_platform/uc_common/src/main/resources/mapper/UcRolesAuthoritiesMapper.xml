@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.uc.mybatis.mapper.UcRolesAuthoritiesMapper" >
+  <resultMap id="BaseResultMap" type="com.uc.mybatis.model.UcRolesAuthorities" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="role_Id" property="roleId" jdbcType="INTEGER" />
+    <result column="authority_Id" property="authorityId" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>

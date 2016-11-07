@@ -1,0 +1,24 @@
+<!DOCTYPE form-validation PUBLIC
+     "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.4.0//EN"
+     "http://commons.apache.org/dtds/validator_1_4_0.dtd">
+<form-validation>
+	<global>
+		<!-- 追加各种Validator -->
+		<validator name="required" classname="com.commons.validator.TestValidator"
+			method="validateRequired" methodParams="java.lang.Object,org.apache.commons.validator.Field"
+			msg="errors.required" />
+	</global>
+
+	<formset>
+		<!-- 定义验证表单的名称 -->
+		<form name="ValidateBean">
+			<!-- 需要验证的属性及验证规则 -->
+			<field property="name" depends="required">
+				<arg key="ValidateBean.name.displayname" /> 
+			</field>
+			<field property="age" depends="required">
+				<arg key="ValidateBean.age.displayname" />
+			</field>
+		</form>
+	</formset>
+</form-validation>

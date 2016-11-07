@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.uc.mybatis.mapper.UcAuthoritiesMapper" >
+  <resultMap id="BaseResultMap" type="com.uc.mybatis.model.UcAuthorities" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="authority_Id" property="authorityId" jdbcType="INTEGER" />
+    <result column="Authority_name" property="authorityName" jdbcType="VARCHAR" />
+    <result column="Authority_DESc" property="authorityDesc" jdbcType="VARCHAR" />
+    <result column="operation" property="operation" jdbcType="INTEGER" />
+    <result column="Enabled" property="enabled" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>

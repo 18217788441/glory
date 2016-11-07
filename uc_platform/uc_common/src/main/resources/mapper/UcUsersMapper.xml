@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.uc.mybatis.mapper.UcUsersMapper">
+	<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+	<resultMap id="BaseResultMap" type="com.uc.mybatis.model.UcUsers">
+		<!-- WARNING - @mbggenerated -->
+		<id column="user_Id" property="userId" jdbcType="INTEGER" />
+		<result column="user_account" property="userAccount" jdbcType="VARCHAR" />
+		<result column="user_pwd" property="userPwd" jdbcType="VARCHAR" />
+		<result column="user_DESc" property="userDesc" jdbcType="VARCHAR" />
+		<result column="Enabled" property="enabled" jdbcType="INTEGER" />
+	</resultMap>
+</mapper>

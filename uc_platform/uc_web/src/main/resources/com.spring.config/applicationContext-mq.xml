@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit-1.6.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	<context:component-scan base-package="com.purple.mq" />
+	<!-- 连接配置 -->
+	<rabbit:connection-factory id="connectionFactory"
+		host="${mq.host}" username="${mq.username}" password="${mq.password}"
+		port="${mq.port}" virtual-host="${mq.vhost}" />
+	<rabbit:admin connection-factory="connectionFactory" />
+
+	<!-- spring template声明 -->
+	<rabbit:template exchange="uc-mq-exchange" id="amqpTemplate"
+		connection-factory="connectionFactory" message-converter="jsonMessageConverter" />
+
+	<!-- 消息对象json转换类 -->
+	<bean id="jsonMessageConverter"
+		class="org.springframework.amqp.support.converter.Jackson2JsonMessageConverter" />
+	<!--申明一个消息队列Queue -->
+	<rabbit:queue id="uc_mq_query" name="uc_mq_query" durable="true"
+		auto-delete="false" exclusive="false" />
+
+	<!-- 交换机定义 -->
+	<rabbit:direct-exchange name="uc-mq-exchange"
+		durable="true" auto-delete="false" id="uc-mq-exchange">
+		<rabbit:bindings>
+			<rabbit:binding queue="uc_mq_query" key="uc_queue_key" />
+		</rabbit:bindings>
+	</rabbit:direct-exchange>
+	<!-- 监听配置 -->
+	<rabbit:listener-container
+		connection-factory="connectionFactory" acknowledge="auto">
+		<rabbit:listener queues="uc_mq_query" ref="queueListenter" />
+	</rabbit:listener-container>
+</beans>

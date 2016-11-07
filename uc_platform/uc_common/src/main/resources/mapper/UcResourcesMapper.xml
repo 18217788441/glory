@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.uc.mybatis.mapper.UcResourcesMapper" >
+  <resultMap id="BaseResultMap" type="com.uc.mybatis.model.UcResources" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="resource_Id" property="resourceId" jdbcType="INTEGER" />
+    <result column="parent_resource_Id" property="parentResourceId" jdbcType="VARCHAR" />
+    <result column="resource_name" property="resourceName" jdbcType="VARCHAR" />
+    <result column="resource_type" property="resourceType" jdbcType="VARCHAR" />
+    <result column="priority" property="priority" jdbcType="INTEGER" />
+    <result column="resource_string" property="resourceString" jdbcType="VARCHAR" />
+    <result column="resource_DESc" property="resourceDesc" jdbcType="VARCHAR" />
+    <result column="Enabled" property="enabled" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>
